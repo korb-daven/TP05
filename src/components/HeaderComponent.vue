@@ -1,6 +1,23 @@
 <script>
 export default {
     name: 'HeaderComponent',
+    computed: {
+    page1Style() {
+      if (this.$route.path === '/page1') {
+        return { backgroundColor: 'red' };  
+      } 
+    },
+    page2Style() {
+      if (this.$route.path === '/page2') {
+        return { backgroundColor: 'red' };  
+      } 
+    },
+    page3Style() {
+      if (this.$route.path === '/page3') {
+        return { backgroundColor: 'red' };  
+      } 
+    }
+  }
 }
 </script>
 
@@ -10,13 +27,13 @@ export default {
       <p>Header</p>
     </div>
     <div class="tab-page">
-      <div class="btn">
+      <div class="btn" :style="page1Style">
         <RouterLink to="/page1">Page 1</RouterLink>
       </div>
-      <div class="btn">
+      <div class="btn" :style="page2Style">
         <RouterLink to="/page2">Page 2</RouterLink>
       </div>
-      <div class="btn">
+      <div class="btn" :style="page3Style">
         <RouterLink to="/page3">Page 3</RouterLink>
       </div>
     </div>
