@@ -1,20 +1,34 @@
 <script>
 export default {
     name: 'BodyComponent',
-    props: ['page'],
+    props: ['page', 'section'],
 }
 </script>
 <template>
   <div class="body">
     <div class="section">
       <div class="item">Menu</div>
-      <div class="item">Section 1</div>
-      <div class="item">Section 2</div>
-      <div class="item">Section 3</div>
-      <div class="item">Section 4</div>
+      <div class="item">
+        <RouterLink :to="{path: `/${page}/section1`}">Section 1</RouterLink>
+      </div>
+      
+      <div class="item">
+        <RouterLink :to="{path: `/${page}/section2`}">Section 2</RouterLink>
+      </div>
+      <div class="item">
+        <RouterLink :to="{path: `/${page}/section3`}">Section 3</RouterLink>
+      </div>
+      <div class="item">
+        <RouterLink :to="{path: `/${page}/section4`}">Section 4</RouterLink>
+      </div>
     </div>
-    <div class="content">
+    <div v-if="section === 'none'" class="content">
       <p class="text">This is the {{ page }}</p>
+    </div>
+    <div v-if="section !== 'none'" class="content">
+      <p class="text">This is the {{ page }}</p>
+      <p>----------------------------------------</p>
+      <p class="text">This is the {{ section }} of the {{ page }}</p>
     </div>
   </div>
 </template>
@@ -27,6 +41,7 @@ export default {
   border-top: 1.5px solid #333940;
   
 }
+
 .section{
   margin-top: 25px;
   width: 20%;
@@ -41,9 +56,11 @@ export default {
   width: 80%;
   height: 360px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .item{
   border-bottom: 1.5px solid #333940;
   width: 100%;

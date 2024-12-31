@@ -1,14 +1,15 @@
 <script>
-import BodyComponent from '../components/BodyComponent.vue';
+import BodyComponent from '../../components/BodyComponent.vue';
 
 export default {
-  name: 'Page1View',
+  name: 'Page2View',
   components: {
     BodyComponent
   },
+  props: ['section'],
   data() {
     return {
-      page: "Page 1" 
+      page: "page2" 
     }
   }
 };
@@ -16,7 +17,7 @@ export default {
 
 <template>
   <div class="body">
-    <BodyComponent :page="page"/>
+    <BodyComponent :page="page" :section="section"/>
   </div>
 </template>
 
